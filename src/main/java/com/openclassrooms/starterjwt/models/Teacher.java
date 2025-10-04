@@ -24,7 +24,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TEACHERS")
+@Table(name = "teachers")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Accessors(chain = true)
@@ -49,9 +49,10 @@ public class Teacher {
     private String firstName;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
+    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 }

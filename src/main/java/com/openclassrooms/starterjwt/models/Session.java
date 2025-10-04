@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "SESSIONS")
+@Table(name = "sessions")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Accessors(chain = true)
@@ -72,10 +72,10 @@ public class Session {
     private List<User> users;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
+    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 }
